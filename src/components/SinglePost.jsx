@@ -8,19 +8,20 @@ function SinglePost() {
 	const post = location.state?.post;
 	console.log(post);
 
-    // const { id } = useParams(); // Получаем ID из URL
-    // const post = articles.find((article) => article.id === parseInt(id)); // Находим статью по ID
-  
-    // if (!post) {
-    //   return <h1>Post not found</h1>;
-    // }
-  
+    // const { id } = useParams(); // get ID from URL
+    // console.log(id);
+
     return (
-      <div className="single-post">
-        <h1 className="post-title">{post.title}</h1>
-        <img src={post.image} alt={post.title} className="post-image" />
-        <p className="post-content">{post.content}</p>
-      </div>
+        <section className="post">
+            <div className="container">
+                <div className="single-post">
+                    <h1 className="post-title">{post.title}</h1>
+                    <img src={post.image} alt={post.title} className="post-image" />
+                    <p className="post-content">{post.content}</p>
+                </div>
+            </div>
+        </section>
+     
     );
 }
 
