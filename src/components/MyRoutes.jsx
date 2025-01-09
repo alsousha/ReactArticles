@@ -15,7 +15,6 @@ function MyRoutes() {
       <Route path="/" element={<MainPage />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact/>} />
-      <Route path='/post/:id' element={<SinglePost />}/>
       {/* <Route path='/post/:id' element={<SinglePost />} />
 						<Route path='/' element={<MainPage />} />
 						<Route path='/newpost' element={<NewPost />} />
