@@ -26,30 +26,39 @@ function MainPage() {
       
   return (
     <div className="main">
-      <h1 className="main-page-title">Articles</h1>
-      <div className="articles-container">
-        {/* {articles&&articles.map((article) => (
-          <div key={article.id} className="article-card">
-            <img src={article.image} alt={article.title} className="article-image" />
-            <h2 className="article-title">{article.title}</h2>
-            <button className="view-button">View</button>
-          </div>
-        ))} */}
+      
+      <section className="articles">
+        <div className="container">
+            <h1 className="main-page-title">Articles</h1>
+            {/* <div className='d-flex'>
+                <Link to="/newpost" className="btn">new Post</Link>
+            </div> */}
+            <div className="articles-container">
+                {/* {articles&&articles.map((article) => (
+                <div key={article.id} className="article-card">
+                    <img src={article.image} alt={article.title} className="article-image" />
+                    <h2 className="article-title">{article.title}</h2>
+                    <button className="view-button">View</button>
+                </div>
+                ))} */}
 
-        {articles&&articles.map((article) => (
-          <div key={article.id} className="article-card">
-            <img src={article.image} alt={article.title} className="article-image" />
-            <h2 className="article-title">{article.title}</h2>
-            <Link 
-                to={`/post/${article.id}`}
-                state={{ post: article }}
-                className="view-button"
-            >
-                View
-            </Link>
-          </div>
-        ))}
-      </div>
+                {articles&&articles.map((article) => (
+                <div key={article.id} className="article-card">
+                    <img src={article.image} alt={article.title} className="article-image" />
+                    <h2 className="article-title">{article.title}</h2>
+                    <Link 
+                        to={`/post/${article.id}`}
+                        state={{ post: article }}
+                        className="view-button"
+                    >
+                        View
+                    </Link>
+                </div>
+                ))}
+            </div>
+        </div>
+      </section>
+
     </div>
   )
 }
