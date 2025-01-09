@@ -202,6 +202,16 @@ a {
 .pb-1 {
 	padding-bottom: 1rem;
 }
+.btn{
+	display: block;
+	padding: 1rem;
+	background-color: #ff8000;
+	border-radius: 1rem;
+	margin-bottom: 3rem;
+	text-align: center;
+	color: aliceblue;
+	font-weight: 700;
+}
 /* #endregion: general */
 
 /* #region header and footer */
