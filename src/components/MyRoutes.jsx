@@ -8,6 +8,7 @@ import SinglePost from './SinglePost';
 import Contact from './Contact';
 import State from './State';
 import EditPost from './EditPost';
+import CreatePost from './CreatePost';
 
 function MyRoutes() {
   return (
@@ -19,6 +20,7 @@ function MyRoutes() {
       <Route path="/contact" element={<Contact/>} />
       <Route path="/state" element={<State/>} />
       <Route path='/editpost/:id' element={<EditPost />} />
+      <Route path='/createpost' element={<CreatePost />} />
       {/* <Route path='/post/:id' element={<SinglePost />} />
 						<Route path='/' element={<MainPage />} />
 						<Route path='/newpost' element={<NewPost />} />

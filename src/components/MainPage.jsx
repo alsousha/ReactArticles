@@ -33,9 +33,9 @@ function MainPage() {
       <section className="articles">
         <div className="container">
             <h1 className="main-page-title">Articles</h1>
-            {/* <div className='d-flex'>
-                <Link to="/newpost" className="btn">new Post</Link>
-            </div> */}
+            <div className='d-flex'>
+                <Link to="/createpost" className="btn">new Post</Link>
+            </div>
             <div className="articles-container">
                 {articles&&articles.map((article) => (
                 <div key={article.id} className="article-card">
