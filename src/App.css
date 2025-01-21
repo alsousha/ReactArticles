@@ -246,3 +246,14 @@ header, footer{
 }
 
 /* #endregion header and footer */
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .success-message{
+    color: green;
+    font-size: 14px;
+    text-align: center;
+  }

@@ -6,9 +6,9 @@ import Header from './Header';
 import Footer from './Footer';
 import SinglePost from './SinglePost';
 import Contact from './Contact';
-import State from './State';
 import EditPost from './EditPost';
 import CreatePost from './CreatePost';
+import Example from './Example';
 
 function MyRoutes() {
   return (
@@ -18,9 +18,10 @@ function MyRoutes() {
       <Route path="/" element={<MainPage />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact/>} />
-      <Route path="/state" element={<State/>} />
       <Route path='/editpost/:id' element={<EditPost />} />
       <Route path='/createpost' element={<CreatePost />} />
+      <Route path='/test' element={<Example />} />
+      <Route path='/post/:id' element={<SinglePost />} />
       {/* <Route path='/post/:id' element={<SinglePost />} />
 						<Route path='/' element={<MainPage />} />
 						<Route path='/newpost' element={<NewPost />} />
