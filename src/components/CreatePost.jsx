@@ -42,7 +42,7 @@ function CreatePost() {
                 formData.append('image', imageFile);
             }
             
-            const res = await axios.post('/articles/', formData, {
+            const res = await axios.post('/post/', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
