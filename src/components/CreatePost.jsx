@@ -4,14 +4,14 @@ import axios from 'axios';
 import '../assets/styles/CreatePost.css';
 
 function CreatePost() {
-    const [msg, setMsg] = useState('')
+    const [msg, setMsg] = useState('');
     const [newPost, setNewPost] = useState({
         title: '',
         author: '',
         content: '',
         image: '',
     });
-
+    const [imageFile, setImageFile] = useState(null);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -23,28 +23,40 @@ function CreatePost() {
             [name]: value,
         }));
     };
+
+    const handleFileChange = (e) => {
+        setImageFile(e.target.files[0]);
+    };
+
     const cleanString = (str) => {
         return str.trim().replace(/\s+/g, ' ');
     };
 
-    const createPost = (postToSend) => {
-        axios.post(`/post/`, postToSend)
-            .then(res => {
-                console.log('Post created:', res.data);
-                // After deletion, update the list of articles
-                setMsg('Post was created')
-                // Clear the message after 1 second
-                setTimeout(() => {
-                    setMsg(''); // Clear the message after 1 second
-                    navigate('/')
-                }, 2000); // 
-            })
-            .catch(error => {
-                console.error('Error:', error);
+    const createPost = async (postToSend) => {
+        try {
+            const formData = new FormData();
+            formData.append('title', postToSend.title);
+            formData.append('author', postToSend.author);
+            formData.append('content', postToSend.content);
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+            
+            const res = await axios.post('/articles/', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
             });
 
-    }
-
+            console.log('Post created:', res.data);
+            setMsg('Post was created');
+            setTimeout(() => {
+                setMsg('');
+                navigate('/');
+            }, 2000);
+        } catch (error) {
+            console.error('Error:', error);
+            setError('Failed to create post. Try again.');
+        }
+    };
 
     // Handle form submission
     const handleSubmit = (e) => {
@@ -53,9 +65,9 @@ function CreatePost() {
         const cleanedPost = {
             title: cleanString(newPost.title),
             author: cleanString(newPost.author),
-            content: cleanString(newPost.content),
-            image: newPost.image.trim(), // For image we remove only the spaces on the edges
+            content: cleanString(newPost.content)
         };
+        
         // Check if required fields are filled
         if (!cleanedPost.title || !cleanedPost.author || !cleanedPost.content) {
             setError('Please fill in all the required fields.');
@@ -65,10 +77,7 @@ function CreatePost() {
             setError('The title length must be more than 3 characters.');
             return;
         }
-        console.log('New Post:', cleanedPost);
-        createPost(cleanedPost)
-        // Go back to the main page
-        // navigate('/');
+        createPost(cleanedPost);
     };
 
     return (
@@ -108,12 +117,11 @@ function CreatePost() {
                         />
                     </div>
                     <div>
-                        <label>Image URL (optional):</label>
+                        <label>Upload Image:</label>
                         <input
-                            type="text"
-                            name="image"
-                            value={newPost.image}
-                            onChange={handleChange}
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
                         />
                     </div>
                     <button type="submit">Create Post</button>
